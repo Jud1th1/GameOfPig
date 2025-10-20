@@ -22,8 +22,38 @@
     <div id="score"></div>
 
     <script>
+        
+        //create variables
+
+        var startGame = document.getElementById('startgame');
+        var gameControl = document.getElementById('gamecontrol');
+        var game = document.getElementById('game');
+        var score = document.getElementById('score');
+        var actionArea = document.getElementById('actions');
     
-    
+        var gameData = {
+            dice: ['1die.jpg', '2die.jgp', '3die.jgp', '4die.jgp', '5die.jgp', '6die.jgp'],
+            players: ['player 1', 'player 2'],
+            score: [0, 0],
+            roll1: 0,
+            roll2: 0,
+            rollSum: 0,
+            index: 0,
+            gameEnd: 29
+        };
+
+        //start the game
+        startGame.addEventListener('click', function(){
+            //change index
+
+            gameControl.innerHTML = '<h2>The game has started </h2>';
+            gameControl.innerHTML += '<button id="quit">Do you want to quit?</button>'
+
+            document.getElementById('quit').addEventListener('click', function(){
+                location.reload(); //refresh page
+            });
+        });
+
     </script>
     
 </body>
