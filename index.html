@@ -9,12 +9,20 @@
 </head>
 <body>
     <h1>Game of PIG</h1>
-    <p>There are two players. The player whose turn it is rolls the dice. The total of the roll is added to the current player's score, unless either die comes up as a "one". If this happens, this player's turn is over, and it is the other player’s turn. After each roll, the current player can either roll again, (assuming a "one" was not rolled) or if the current player feels that luck is running thin, they can pass to the other player. The first player to get 30 points or higher wins.</p> 
-    <p>Oh, and if you roll two "ones" (snake eyes), your current score gets zeroed out. So don’t do that.</p>
+    <p>
+    The Game of Pig is a two-player dice challenge of luck and risk! 
+    Each player takes turns rolling two dice. The total of the roll 
+    is added to that player’s score unless a <strong>one</strong> is rolled.
+    If this happens, this player's turn is over, and it is the other player’s turn.
+    </p>
+    <p>After each roll, the current player can either roll again, 
+    (assuming a "one" was not rolled) or  play it safe and <strong>pass</strong> 
+    the turn to their opponent. The first player to reach <strong>30 points or more</strong> wins!</p> 
+    <p>But beware: if you roll <strong>two ones</strong> (also known as <em>snake eyes</em>) your entire score resets to zero. Ouch!</p>
 
     <div id="gamecontrol">
         <h2>Start a Game</h2>
-        <button id="startgame">Randomly Pick the First Player, and Start the Game</button>
+        <button id="startgame">Pick the First Player, and Start the Game</button>
     </div>
 
     <div id="game"></div>
