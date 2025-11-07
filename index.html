@@ -12,40 +12,43 @@
 </head>
 <body>
     
-    <div id="instructions">
-        <h1>Game of PIG</h1>
+    <main id="board">
 
-        <p>
-        The Game of Pig is a two-player dice challenge of luck and risk! 
-        Each player takes turns rolling two dice. The total of the roll 
-        is added to that player’s score unless a <strong>one</strong> is rolled.
-        If this happens, this player's turn is over, and it is the other player’s turn.
-        </p>
-        <br>
-        <p>After each roll, the current player can either roll again, 
-        (assuming a "one" was not rolled) or  play it safe and <strong>pass</strong> 
-        the turn to their opponent. The first player to reach <strong>30 points or more</strong> wins!</p> 
-        <p>But beware: if you roll <strong>two ones</strong> (also known as <em>snake eyes</em>) your entire score resets to zero. Ouch!</p>
-    </div>
+        <aside id="instructions">
+            <h1>Game of PIG</h1>
 
-    <hr>
+            <p>
+            The Game of Pig is a two-player dice challenge of luck and risk! 
+            Each player takes turns rolling two dice. The total of the roll 
+            is added to that player’s score unless a <strong>one</strong> is rolled.
+            If this happens, this player's turn is over, and it is the other player’s turn.
+            </p>
+            <br>
+            <p>After each roll, the current player can either roll again, 
+            (assuming a "one" was not rolled) or  play it safe and <strong>pass</strong> 
+            the turn to their opponent. The first player to reach <strong>30 points or more</strong> wins!</p> 
+            <p>But beware: if you roll <strong>two ones</strong> (also known as <em>snake eyes</em>) your entire score resets to zero. Ouch!</p>
+
+        </aside>
     
-    <div id="gamecontrol">
+    <section id="stage">
         <h2>Start a Game</h2>
-        <form>
-            <h3> Enter Player Names</h3>
-            <label for="player1">Player 1:</label><br>
-            <input type="text" id="player1" name="player1"><br>
-            <label for="player2">Player 2:</label><br>
-            <input type="text" id="player2" name="player2"><br>
-            <input type="submit" value="Start">
-        </form>
-    </div>
+        <div id="gamecontrol">
+            <form>
+                <h3> Enter Player Names</h3>
+                <label for="player1">Player 1:</label><br>
+                <input type="text" id="player1" name="player1"><br>
+                <label for="player2">Player 2:</label><br>
+                <input type="text" id="player2" name="player2"><br>
+                <input type="submit" value="Start">
+            </form>
+        </div>
+    </section>
 
-    <div id="game"></div>
-    <div id="actions"></div>
-    <div id="score"></div>
-
+        <div id="game"></div>
+        <div id="actions"></div>
+        <div id="score"></div>
+    </main>
 
     <script src="script.js">
         
