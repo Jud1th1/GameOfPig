@@ -8,18 +8,22 @@
 	<link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Game of PIG</h1>
-    <p>
-    The Game of Pig is a two-player dice challenge of luck and risk! 
-    Each player takes turns rolling two dice. The total of the roll 
-    is added to that player’s score unless a <strong>one</strong> is rolled.
-    If this happens, this player's turn is over, and it is the other player’s turn.
-    </p>
-    <p>After each roll, the current player can either roll again, 
-    (assuming a "one" was not rolled) or  play it safe and <strong>pass</strong> 
-    the turn to their opponent. The first player to reach <strong>30 points or more</strong> wins!</p> 
-    <p>But beware: if you roll <strong>two ones</strong> (also known as <em>snake eyes</em>) your entire score resets to zero. Ouch!</p>
+    
+    <div id="instructions">
+        <h1>Game of PIG</h1>
 
+        <p>
+        The Game of Pig is a two-player dice challenge of luck and risk! 
+        Each player takes turns rolling two dice. The total of the roll 
+        is added to that player’s score unless a <strong>one</strong> is rolled.
+        If this happens, this player's turn is over, and it is the other player’s turn.
+        </p>
+        <p>After each roll, the current player can either roll again, 
+        (assuming a "one" was not rolled) or  play it safe and <strong>pass</strong> 
+        the turn to their opponent. The first player to reach <strong>30 points or more</strong> wins!</p> 
+        <p>But beware: if you roll <strong>two ones</strong> (also known as <em>snake eyes</em>) your entire score resets to zero. Ouch!</p>
+    </div>
+    
     <div id="gamecontrol">
         <h2>Start a Game</h2>
         <button id="startgame">Pick the First Player, and Start the Game</button>
@@ -104,7 +108,7 @@
                 //switch player
                 gameData.index ? (gameData.index = 0): (gameData.index = 1)
                 //show current score after 2 secs
-                showCurrentScore();
+                showCurrentScore(); 
                 setTimeout(setUpTurn, 2000); 
             }
             else if(gameData.roll1 === 1 || gameData.roll2 === 1){
@@ -125,7 +129,9 @@
                     setUpTurn();
                 });
 
-                //Check winning condition
+                checkWinningCondition();
+
+                
 
                 function checkWinningCondition(){
                     if(gameData.score[gameData.index] > gameData.gameEnd){
@@ -136,7 +142,7 @@
                         document.getElementById('quit').innerHTML = "Start a New Game?";
                     }
                     else{
-                        showCurrentScore();
+                        showCurrentScore(); 
                     }
                 }
 

@@ -1,17 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial;
+    background-color: #588157;
     color: #333;
     padding: 50px;
     line-height: 1.5em;
+}
+
+#instructions{
+    top: 0;
+    left: 0;
+    background-color: #eaeaea;
+    width: 30%;
 }
 
 button { 
     padding: 10px;
 }
 
-div {
-    padding: 20px;
-}
 
 #gamecontrol, #score {
     background-color: aliceblue;
