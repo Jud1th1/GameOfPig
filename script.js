@@ -7,10 +7,13 @@
         const game = document.getElementById('game');
         const score = document.getElementById('score');
         const actionArea = document.getElementById('actions');
-    
+        const form = document.querySelector("#gamecontrol form"); 
+        const p1Input = document.getElementById("player1");
+        const p2Input = document.getElementById("player2");
+
         const gameData = {
             dice: ['1die.jpg', '2die.jpg', '3die.jpg', '4die.jpg', '5die.jpg', '6die.jpg'],
-            players: ['player 1', 'player 2'],
+            players: ['Player 1','Player 2'],
             score: [0, 0],
             roll1: 0,
             roll2: 0,
@@ -18,6 +21,29 @@
             index: 0,
             gameEnd: 29
         };
+
+
+        //Save names
+        const saved = JSON.parse(localStorage.getItem("pigPlayers") || "null");
+        if (saved && saved.length === 2){
+            gameData.players = saved;
+
+            p1Input.value = saved[0];
+            p2Input.value = saved[1];
+        }
+
+        
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            
+            const p1Name = (p1Input.value || "").trim() || "Player 1"; //trim is used to clear accidental spaces
+            const p2Name = (p2Input.value || "").trim() || "Player 2";
+
+            localStorage.setItem("pigPlayers", JSON.stringify([p1Name, p2Name]));
+
+            // feed into existing game state
+            gameData.players = [p1Name, p2Name];
+        });
 
         //start the game
         startGame.addEventListener('click', function(){
