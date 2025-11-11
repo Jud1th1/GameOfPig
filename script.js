@@ -2,7 +2,6 @@
     'use strict';
 
         //create variables
-        const startGame = document.getElementById('startgame');
         const gameControl = document.getElementById('gamecontrol');
         const game = document.getElementById('game');
         const score = document.getElementById('score');
@@ -43,22 +42,26 @@
 
             // feed into existing game state
             gameData.players = [p1Name, p2Name];
+            gameData.score = [0, 0]; // fresh game
+
+            form.style.display = 'none';
+
+            startGame(); // begin immediately after names are submitted
         });
 
         //start the game
-        startGame.addEventListener('click', function(){
-            gameData.index = Math.round(Math.random()) //pick a random number and round it. Choose player (0 or 1)
-
-            gameControl.innerHTML = '<h2>The game has started </h2>';
-            gameControl.innerHTML += '<button id="quit">Do you want to quit?</button>'
-
-            document.getElementById('quit').addEventListener('click', function(){
-                location.reload(); //refresh page
+         function startGame(){
+            gameData.index = Math.round(Math.random()); //0 or 1 (Player 1 or 2)
+            gameControl.innerHTML = '<h2>The game has started!</h2>';
+            gameControl.innerHTML += '<button id="quit"> Do you want to quit?</button>'
+            
+            document.getElementById('quit').addEventListener('click', function () {
+                location.reload(); 
             });
 
-            console.log(gameData.index);
             setUpTurn();
-        });
+
+         }
 
         //Set up the turn 
         function setUpTurn() {
@@ -86,17 +89,18 @@
 
             //4. Totals the rolls
             gameData.rollSum = gameData.roll1 + gameData.roll2;
-            console.log(gameData.rollSum);
+            /* console.log(gameData.rollSum); */
 
             gameData.rollSum =2;
 
             if(gameData.roll === 2){
                 //SNAKE EYES- if two 1's are rolled 
-                game.innerHTML += '<p>Oh snap! You got snake eyes!</p>'
+                game.innerHTML += '<p>Oh snap! You got snake eyes! Score resets to 0.</p>'
                 //reset score
                 gameData.score[gameData.index] = 0;
                 //switch player
-                gameData.index ? (gameData.index = 0): (gameData.index = 1)
+                /* gameData.index ? (gameData.index = 0): (gameData.index = 1) */
+                gameData.index = gameData.index ? 0 : 1;
                 //show current score after 2 secs
                 showCurrentScore(); 
                 setTimeout(setUpTurn, 2000); 
