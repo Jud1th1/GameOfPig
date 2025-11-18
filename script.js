@@ -10,6 +10,12 @@
         const p1Input = document.getElementById("player1");
         const p2Input = document.getElementById("player2");
 
+        const gameScreen = document.getElementById('game-screen');
+        const name1El = document.querySelector('.name1');
+        const name2El = document.querySelector('.name2');
+        const score1El = document.querySelector('.score1');
+        const score2El = document.querySelector('.score2');
+
         const gameData = {
             dice: ['1die.jpg', '2die.jpg', '3die.jpg', '4die.jpg', '5die.jpg', '6die.jpg'],
             players: ['Player 1','Player 2'],
@@ -51,10 +57,12 @@
         //start the game
          function startGame(){
             gameData.index = Math.round(Math.random()); //0 or 1 (Player 1 or 2)
-            gameControl.innerHTML = '<p>The game has started!</p>';
+            gameControl.innerHTML = '<p class="start">The game has started!</p>';
             document.querySelector("h2").style.display = 'none';
             gameControl.innerHTML += '<button id="quit"> Quit?</button>'
             
+            gameScreen.style.display = 'grid';
+
             document.getElementById('quit').addEventListener('click', function () {
                 location.reload(); 
             });
@@ -91,9 +99,7 @@
             gameData.rollSum = gameData.roll1 + gameData.roll2;
             /* console.log(gameData.rollSum); */
 
-            gameData.rollSum =2;
-
-            if(gameData.roll === 2){
+            if(gameData.roll1 === 1 && gameData.roll2 === 1){
                 //SNAKE EYES- if two 1's are rolled 
                 game.innerHTML += '<p>Oh snap! You got snake eyes! Score resets to 0.</p>'
                 //reset score
@@ -141,10 +147,17 @@
                 }
 
                 function showCurrentScore(){
+                    // update scoreboard cards
+                    name1El.innerHTML = `<p><strong>Player 1:  ${gameData.players[0]}`;
+                    name2El.innerHTML = `<p><strong>Player 2:  ${gameData.players[1]}`;
+
                     //show the current score
-                        score.innerHTML = `<p> The score is currently <strong>${gameData.players[0]} is
-                        ${gameData.score[0]}</strong> and <strong>${gameData.players[1]} is
-                        ${gameData.score[1]}</strong> </p>`;
+                    score1El.textContent = gameData.score[0];
+                    score2El.textContent = gameData.score[1];
+
+                    /* score.innerHTML = `<p> The score is currently <strong>${gameData.players[0]} is
+                    ${gameData.score[0]}</strong> and <strong>${gameData.players[1]} is
+                    ${gameData.score[1]}</strong> </p>`; */
                 }
             }
         }  
