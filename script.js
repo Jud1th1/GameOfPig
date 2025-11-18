@@ -31,7 +31,6 @@
             p2Input.value = saved[1];
         }
 
-        
         form.addEventListener("submit", function (event) {
             event.preventDefault();
             
@@ -52,8 +51,9 @@
         //start the game
          function startGame(){
             gameData.index = Math.round(Math.random()); //0 or 1 (Player 1 or 2)
-            gameControl.innerHTML = '<h2>The game has started!</h2>';
-            gameControl.innerHTML += '<button id="quit"> Do you want to quit?</button>'
+            gameControl.innerHTML = '<p>The game has started!</p>';
+            document.querySelector("h2").style.display = 'none';
+            gameControl.innerHTML += '<button id="quit"> Quit?</button>'
             
             document.getElementById('quit').addEventListener('click', function () {
                 location.reload(); 
@@ -65,7 +65,7 @@
 
         //Set up the turn 
         function setUpTurn() {
-            game.innerHTML = `<p>Roll the dice for ${gameData.players[gameData.index]}</p>`;
+            game.innerHTML = `<p class="roll">Roll the dice for ${gameData.players[gameData.index]}</p>`;
             actionArea.innerHTML = '<button id="roll">Roll the dice!</button>';
             document.getElementById('roll').addEventListener('click', function(){
                 console.log("roll the dice");
