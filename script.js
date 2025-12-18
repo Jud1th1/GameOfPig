@@ -17,7 +17,7 @@
         const score2El = document.querySelector('.score2');
 
         const gameData = {
-            dice: ['1die.jpg', '2die.jpg', '3die.jpg', '4die.jpg', '5die.jpg', '6die.jpg'],
+            dice: ['One.png', 'Two.png', 'Three.png', 'Four.png', 'Five.png', 'Six.png'],
             players: ['Player 1','Player 2'],
             score: [0, 0],
             roll1: 0,
@@ -75,9 +75,12 @@
         function setUpTurn() {
             game.innerHTML = `<p class="roll">Roll the dice for ${gameData.players[gameData.index]}</p>`;
             actionArea.innerHTML = '<button id="roll">Roll the dice!</button>';
+            const msg = document.querySelector('.start');
+            
             document.getElementById('roll').addEventListener('click', function(){
                 console.log("roll the dice");
                 throwDice();
+                if(msg){msg.remove();}
             })
         }
 
@@ -87,8 +90,8 @@
             actionArea.innerHTML = '';
 
             //2. Records the two rolls of the dice
-            gameData.roll1 =  Math.round(Math.random()* 6) + 1 //to get a number between 1-6 
-            gameData.roll2 =  Math.round(Math.random()* 6) + 1
+            gameData.roll1 =  Math.floor(Math.random()* 6) + 1 //to get a number between 1-6 
+            gameData.roll2 =  Math.floor(Math.random()* 6) + 1
 
             //3. Sets a message and shows the dice
             game.innerHTML = `<p>Roll the dice for ${gameData.players[gameData.index]}</p>`;
@@ -125,7 +128,7 @@
                 });
 
                  document.getElementById('pass').addEventListener('click', function(){
-                    gameData.index ? (gameData.index = 0): (gameData.index = 1);
+                    gameData.index = gameData.index ? 0 : 1;
                     setUpTurn();
                 });
 
@@ -148,8 +151,8 @@
 
                 function showCurrentScore(){
                     // update scoreboard cards
-                    name1El.innerHTML = `<p><strong>Player 1:  ${gameData.players[0]}`;
-                    name2El.innerHTML = `<p><strong>Player 2:  ${gameData.players[1]}`;
+                    name1El.textContent = `<p><strong>Player 1:  ${gameData.players[0]}`;
+                    name2El.textContent = `<p><strong>Player 2:  ${gameData.players[1]}`;
 
                     //show the current score
                     score1El.textContent = gameData.score[0];

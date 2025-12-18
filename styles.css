@@ -189,6 +189,12 @@ button:active {
     padding: 24px 16px
 }
 
+#quit{
+    position: fixed; 
+    right: 5%;
+    bottom: 5%;
+}
+
 
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
