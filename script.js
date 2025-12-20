@@ -61,7 +61,9 @@
             document.querySelector("h2").style.display = 'none';
             gameControl.innerHTML += '<button id="quit"> Quit?</button>'
             
-            gameScreen.style.display = 'grid';
+            /* gameScreen.style.display = 'grid'; */
+            gameScreen.classList.remove('is-hidden');
+
 
             document.getElementById('quit').addEventListener('click', function () {
                 location.reload(); 
@@ -75,6 +77,7 @@
         function setUpTurn() {
             game.innerHTML = `<p class="roll">Roll the dice for ${gameData.players[gameData.index]}</p>`;
             actionArea.innerHTML = '<button id="roll">Roll the dice!</button>';
+            
             const msg = document.querySelector('.start');
             
             document.getElementById('roll').addEventListener('click', function(){
@@ -133,10 +136,11 @@
                 });
 
                 checkWinningCondition();
-
-                
-
-                function checkWinningCondition(){
+            }
+        }  
+    
+        //Check for winning score 
+         function checkWinningCondition(){
                     if(gameData.score[gameData.index] > gameData.gameEnd){
                         score.innerHTML = `<h2>${gameData.players[gameData.index]}
                         wins with ${gameData.score[gameData.index]} points! </h2>`
@@ -149,21 +153,18 @@
                     }
                 }
 
-                function showCurrentScore(){
-                    // update scoreboard cards
-                    name1El.textContent = `<p><strong>Player 1:  ${gameData.players[0]}`;
-                    name2El.textContent = `<p><strong>Player 2:  ${gameData.players[1]}`;
+        function showCurrentScore(){
+            // update scoreboard cards
+            name1El.textContent = gameData.players[0];
+            name2El.textContent = gameData.players[1];
 
-                    //show the current score
-                    score1El.textContent = gameData.score[0];
-                    score2El.textContent = gameData.score[1];
+            //show the current score
+            score1El.textContent = gameData.score[0];
+            score2El.textContent = gameData.score[1];
 
-                    /* score.innerHTML = `<p> The score is currently <strong>${gameData.players[0]} is
-                    ${gameData.score[0]}</strong> and <strong>${gameData.players[1]} is
-                    ${gameData.score[1]}</strong> </p>`; */
-                }
-            }
-        }  
-    
+            /* score.innerHTML = `<p> The score is currently <strong>${gameData.players[0]} is
+            ${gameData.score[0]}</strong> and <strong>${gameData.players[1]} is
+            ${gameData.score[1]}</strong> </p>`; */
+        }
 
 })();

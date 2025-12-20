@@ -46,26 +46,27 @@
         </div>
 
         <!-- ACTIVE GAME SCREEN -->
-        <div id="game-screen">
+        <div id="game-screen" class="is-hidden">
 
-            <!-- Left side -->
-            <div class="scoreboard scoreboard1">
-                <div class="name1">Player 1</div>
-                <div class="score1">0</div>
-            </div>
-
-            <!-- Center/Game Display -->
-            <div class="arena">
+             <div class="arena">
                 <div id="game"></div>
                 <div id="actions"></div>
-                <div id="score"></div> 
+                <div id="score"></div>
             </div>
 
-            <!-- Right Side -->
-            <div class="scoreboard scoreboard2">
+            <aside class="sidebar">
+                <div class="scoreboard scoreboard1">
+                <div class="label">PLAYER 1</div>
+                <div class="name1">Player 1</div>
+                <div class="score1">0</div>
+                </div>
+
+                <div class="scoreboard scoreboard2">
+                <div class="label">PLAYER 2</div>
                 <div class="name2">Player 2</div>
                 <div class="score2">0</div>
-            </div>
+                </div>
+            </aside>
         </div>
     </section>
     

@@ -7,7 +7,8 @@
 body {
     font-family: "Source Serif 4", serif;
     font-size: 1.125rem;
-    background-color: #588157;
+    background: #588157;
+    background: linear-gradient(180deg,rgba(88, 129, 87, 1) 0%, rgba(117, 153, 115, 1) 50%, rgba(134, 179, 134, 1) 100%);
     color: #333;
     line-height: 1.5em;
     min-height: 100vh;
@@ -63,19 +64,6 @@ h3 {
     padding: 56px 24px;
 }
 
-/* Midline */
-#stage::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    height: 3px;
-    background: rgba(255,255,255,0.55);
-    z-index: -10;
-}
-
-
 /* Start card */
 #gamecontrol form {
     background: #A8C7AE;       
@@ -125,12 +113,28 @@ button:active {
 /* Active Game board */
 
 #game-screen{
-    display: none;
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 24px;
     width: 100%;
     margin-top: 40px;
-    grid-template-columns: 200px 1fr 200px;
-    column-gap: 24px;
-    align-items: start;
+    align-items: center;
+}
+
+#game-screen.is-hidden {
+    display: none;
+}
+
+.start{
+    color: white;
+    font-family: "Oswald", sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+#game img {
+  width: 150px;
+  height: auto;
 }
 
 /* Center game area */
@@ -157,6 +161,12 @@ button:active {
     font-weight: 600;
 }
 
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: end;       
+}
 
 .scoreboard {
     background: #DCE2C8;
@@ -191,7 +201,7 @@ button:active {
 
 #quit{
     position: fixed; 
-    right: 5%;
+    right: 2%;
     bottom: 5%;
 }
 
