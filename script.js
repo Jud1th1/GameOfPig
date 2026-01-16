@@ -27,6 +27,9 @@
             gameEnd: 29
         };
 
+        window.onload = function() {
+            document.getElementById("start-form").reset();
+        };
 
         //Save names
         const saved = JSON.parse(localStorage.getItem("pigPlayers") || "null");
@@ -57,7 +60,7 @@
         //start the game
          function startGame(){
             gameData.index = Math.round(Math.random()); //0 or 1 (Player 1 or 2)
-            gameControl.innerHTML = '<p class="start">The game has started!</p>';
+            //gameControl.innerHTML = '<p class="start">The game has started!</p>';
             document.querySelector("h2").style.display = 'none';
             gameControl.innerHTML += '<button id="quit"> Quit?</button>'
             
@@ -107,7 +110,7 @@
 
             if(gameData.roll1 === 1 && gameData.roll2 === 1){
                 //SNAKE EYES- if two 1's are rolled 
-                game.innerHTML += '<p>Oh snap! You got snake eyes! Score resets to 0.</p>'
+                game.innerHTML += '<p class="gameMSG">Oh snap! You got snake eyes! Score resets to 0.</p>'
                 //reset score
                 gameData.score[gameData.index] = 0;
                 //switch player
@@ -119,12 +122,12 @@
             }
             else if(gameData.roll1 === 1 || gameData.roll2 === 1){
                 gameData.index ? (gameData.index = 0): (gameData.index = 1) //check value of index
-                game.innerHTML += `<p>You rolled a 1, switching to ${gameData.players[gameData.index]}</p>`
+                game.innerHTML += `<p class="gameMSG">You rolled a 1, switching to ${gameData.players[gameData.index]}</p>`
                 setTimeout(setUpTurn, 2000); 
             }
             else{
                 gameData.score[gameData.index] = gameData.score[gameData.index] + gameData.rollSum;
-                actionArea.innerHTML = '<button id= "rollagain">Roll Again </button> or <button id= "pass">Pass </button>';
+                actionArea.innerHTML = '<p class="myBTNs"><button id= "rollagain">Roll Again </button> OR <button id= "pass">Pass </button></p>';
                 
                 document.getElementById('rollagain').addEventListener('click', function(){
                     throwDice();
@@ -142,7 +145,7 @@
         //Check for winning score 
          function checkWinningCondition(){
                     if(gameData.score[gameData.index] > gameData.gameEnd){
-                        score.innerHTML = `<h2>${gameData.players[gameData.index]}
+                        score.innerHTML = `<h2 class="winner">${gameData.players[gameData.index]}
                         wins with ${gameData.score[gameData.index]} points! </h2>`
 
                         actionArea.innerHTML = '';
@@ -166,5 +169,8 @@
             ${gameData.score[0]}</strong> and <strong>${gameData.players[1]} is
             ${gameData.score[1]}</strong> </p>`; */
         }
+
+        
+
 
 })();

@@ -35,7 +35,7 @@
         <h2>Start a Game</h2>
 
         <div id="gamecontrol">
-            <form id="start-form">
+            <form id="start-form" autocomplete="off">
                 <h3> Enter Player Names</h3>
                 <label for="player1">Player 1:</label><br>
                 <input type="text" id="player1" name="player1"><br>
@@ -48,7 +48,8 @@
         <!-- ACTIVE GAME SCREEN -->
         <div id="game-screen" class="is-hidden">
 
-             <div class="arena">
+            <div class="arena">
+                <p class="start">The game has started!</p>
                 <div id="game"></div>
                 <div id="actions"></div>
                 <div id="score"></div>
@@ -194,9 +195,6 @@
             }
         }   */  
 
-
-      
-        
     </script>
     
 </body>
