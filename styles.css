@@ -236,13 +236,95 @@ button:active {
 
 
 /* ===== Responsive ===== */
+
 @media (max-width: 900px) {
   #board { grid-template-columns: 1fr; }
   #instructions { order: 2; }
   #stage { order: 1; padding-top: 32px; }
-  #stage::after { display: none; } /* hide midline on small screens */
+  #stage::after { display: none; }
   #game-screen {
     grid-template-columns: 1fr;
     row-gap: 16px;
   }
+  .sidebar { order: -1; }
 }
+
+
+
+@media (max-width: 600px) {
+    #gamecontrol form {
+        width: min(360px, 92vw);
+        padding: 22px 18px;
+    }
+
+    h2 {
+        padding: 0;         
+        margin: 0;           
+        line-height: 1.1;
+        font-size: clamp(1.6rem, 7vw, 2.4rem);
+        text-align: center;
+    }
+
+   #stage {
+        padding: 28px 16px;
+    }
+
+    .sidebar {
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .scoreboard {
+        width: 46%;
+        min-width: 0;
+        padding: 20px;
+        margin-bottom: 40px;
+    }
+
+    .name1,
+    .name2 {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+
+    .score1,
+    .score2 {
+        padding: 14px 10px;
+        font-size: 1.1rem;
+    }
+
+      #score {
+     display: inline;   
+  }
+
+  .winner {
+    display: block;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.15;
+    font-size: clamp(1.4rem, 6vw, 2.2rem);
+    max-width: 92vw;
+    margin: 0 auto;
+  }
+
+
+    #actions, .myBTNs {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    #quit {
+        right: 12px;
+        bottom: 12px;
+    }
+
+    #instructions {
+        padding: 28px 18px;
+    }
+
+}
+
