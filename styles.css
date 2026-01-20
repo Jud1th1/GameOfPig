@@ -238,17 +238,27 @@ button:active {
 /* ===== Responsive ===== */
 
 @media (max-width: 900px) {
-  #board { grid-template-columns: 1fr; }
-  #instructions { order: 2; }
-  #stage { order: 1; padding-top: 32px; }
-  #stage::after { display: none; }
-  #game-screen {
-    grid-template-columns: 1fr;
-    row-gap: 16px;
-  }
-  .sidebar { order: -1; }
-}
-
+    #board { grid-template-columns: 1fr; }
+    #instructions { order: 2; }
+    #stage { order: 1; padding-top: 32px; }
+    #stage::after { display: none; }
+    #game-screen {
+        grid-template-columns: 1fr;
+        row-gap: 16px;
+    }
+    .sidebar { order: -1; }
+    }
+   
+    .winner {
+        display: block;
+        text-align: center;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        line-height: 1.15;
+        font-size: clamp(1.4rem, 6vw, 2.2rem);
+        max-width: 92vw;
+        margin: 0 auto;
+    }
 
 
 @media (max-width: 600px) {
@@ -296,20 +306,8 @@ button:active {
     }
 
       #score {
-     display: inline;   
-  }
-
-  .winner {
-    display: block;
-    text-align: center;
-    white-space: normal;
-    overflow-wrap: anywhere;
-    line-height: 1.15;
-    font-size: clamp(1.4rem, 6vw, 2.2rem);
-    max-width: 92vw;
-    margin: 0 auto;
-  }
-
+        display: inline;   
+    }
 
     #actions, .myBTNs {
         flex-wrap: wrap;

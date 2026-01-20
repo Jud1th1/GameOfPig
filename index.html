@@ -14,7 +14,7 @@
     
     <main id="board">
 
-        <aside id="instructions">
+        <aside id="instructions" aria-labelledby="instructions-title">
             <h1>Game of PIG</h1>
 
             <p>
@@ -23,24 +23,32 @@
             is added to that player’s score unless a <strong>one</strong> is rolled.
             If this happens, this player's turn is over, and it is the other player’s turn.
             </p>
-            <br>
+            
             <p>After each roll, the current player can either roll again, 
             (assuming a "one" was not rolled) or  play it safe and <strong>pass</strong> 
             the turn to their opponent. The first player to reach <strong>30 points or more</strong> wins!</p> 
+            
             <p>But beware: if you roll <strong>two ones</strong> (also known as <em>snake eyes</em>) your entire score resets to zero. Ouch!</p>
 
         </aside>
     
-    <section id="stage">
+    <section id="stage" aria-labelledby="instructions-title">
         <h2>Start a Game</h2>
 
         <div id="gamecontrol">
             <form id="start-form" autocomplete="off">
                 <h3> Enter Player Names</h3>
-                <label for="player1">Player 1:</label><br>
-                <input type="text" id="player1" name="player1"><br>
-                <label for="player2">Player 2:</label><br>
-                <input type="text" id="player2" name="player2"><br>
+
+                <div class="field">
+                    <label for="player1">Player 1:</label><br>
+                    <input type="text" id="player1" name="player1" placeholder="Your Name"><br>
+                </div>
+
+                <div class="field">
+                    <label for="player2">Player 2:</label><br>
+                    <input type="text" id="player2" name="player2" placeholder="Friend's Name"><br>
+                </div>
+
                 <input type="submit" id="start" value="Start">
             </form>
         </div>
@@ -52,17 +60,17 @@
                 <p class="start">The game has started!</p>
                 <div id="game"></div>
                 <div id="actions"></div>
-                <div id="score"></div>
+                <div id="score" aria-label="Player 2 score"></div>
             </div>
 
-            <aside class="sidebar">
-                <div class="scoreboard scoreboard1">
+            <aside class="sidebar" aria-label="Scoreboard">
+                <div class="scoreboard scoreboard1" aria-label="Scoreboard">
                 <div class="label">PLAYER 1</div>
                 <div class="name1">Player 1</div>
                 <div class="score1">0</div>
                 </div>
 
-                <div class="scoreboard scoreboard2">
+                <div class="scoreboard scoreboard2" aria-label="Player 2 score">
                 <div class="label">PLAYER 2</div>
                 <div class="name2">Player 2</div>
                 <div class="score2">0</div>
