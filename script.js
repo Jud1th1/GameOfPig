@@ -31,22 +31,11 @@
             document.getElementById("start-form").reset();
         };
 
-        //Save names
-        const saved = JSON.parse(localStorage.getItem("pigPlayers") || "null");
-        if (saved && saved.length === 2){
-            gameData.players = saved;
-
-            p1Input.value = saved[0];
-            p2Input.value = saved[1];
-        }
-
         form.addEventListener("submit", function (event) {
             event.preventDefault();
             
             const p1Name = (p1Input.value || "").trim() || "Player 1"; //trim is used to clear accidental spaces
             const p2Name = (p2Input.value || "").trim() || "Player 2";
-
-            localStorage.setItem("pigPlayers", JSON.stringify([p1Name, p2Name]));
 
             // feed into existing game state
             gameData.players = [p1Name, p2Name];
@@ -66,13 +55,16 @@
             
             /* gameScreen.style.display = 'grid'; */
             gameScreen.classList.remove('is-hidden');
-
+            showCurrentScore();
 
             document.getElementById('quit').addEventListener('click', function () {
                 location.reload(); 
             });
 
             setUpTurn();
+
+            const quitBtn = document.getElementById('quit');
+            quitBtn.addEventListener('click', resetGame);
 
          }
 
@@ -82,12 +74,12 @@
             actionArea.innerHTML = '<button id="roll">Roll the dice!</button>';
             
             const msg = document.querySelector('.start');
-            
-            document.getElementById('roll').addEventListener('click', function(){
-                console.log("roll the dice");
+            const rollBtn = document.getElementById('roll');
+
+            rollBtn.addEventListener('click', function(){
                 throwDice();
-                if(msg){msg.remove();}
-            })
+                 if (msg) msg.classList.add('is-hidden'); 
+                }, { once: true });
         }
 
         //Throw the dice
@@ -127,7 +119,8 @@
             }
             else{
                 gameData.score[gameData.index] = gameData.score[gameData.index] + gameData.rollSum;
-                actionArea.innerHTML = '<p class="myBTNs"><button id= "rollagain">Roll Again </button> OR <button id= "pass">Pass </button></p>';
+                actionArea.innerHTML = 
+                '<div class="myBTNs"><button id= "rollagain">Roll Again </button><span>OR</span><button id= "pass">Pass </button></div>';
                 
                 document.getElementById('rollagain').addEventListener('click', function(){
                     throwDice();
@@ -164,10 +157,18 @@
             //show the current score
             score1El.textContent = gameData.score[0];
             score2El.textContent = gameData.score[1];
+        }
 
-            /* score.innerHTML = `<p> The score is currently <strong>${gameData.players[0]} is
-            ${gameData.score[0]}</strong> and <strong>${gameData.players[1]} is
-            ${gameData.score[1]}</strong> </p>`; */
+        function resetGame(){
+            gameData.score = [0,0];
+            gameData.index = Math.round(Math.random());
+            showCurrentScore();
+
+            const msg = document.querySelector('.start');
+            if (msg) msg.classList.remove('is-hidden');
+
+            score.innerHTML = '';
+            setUpTurn();
         }
 
         
